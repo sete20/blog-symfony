@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}مقال
+{% endblock %}
+
+{% block body %}
+<h1>صفحة المقال</h1>
+	<style>
+		.articales {
+			width: 100%;
+			border-radius: 10px;
+			box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+			padding: 16px 20px;
+
+
+		}
+		img {
+			border-radius: 10px;
+			box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+			margin: 10px;
+		}
+	</style>
+
+<section class="articales mt-5">
+	<articale class="mb-5">
+		<h2>{{ article.title }}</h2>
+		<div
+			class="metadata">
+			{# {{ article.CreatedAt }} #}
+
+			<span class="badge badge-danger">
+
+				{{ article.category.name }}
+			</span>
+		</div>
+
+
+		<div class="content">
+			<img src="https://picsum.photos/seed/picsum/300/150">
+
+
+			<p>
+				{{ article.content }}
+			</p>
+			<a href="{{path('article_show',{'article':article.id})}}" class="btn btn-info">اقرا المزيد</a>
+
+
+		</div>
+
+
+	</articale>
+
+</section>
+
+
+{% endblock %}
+
+

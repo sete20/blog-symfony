@@ -4,17 +4,57 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+   .articales{
+       width:70%;
+       border-radius:10px;
+       box-shadow:0 4px 16px rgba(0,0,0,.25);
+       padding: 16px 20px;
+
+
+   }
+   img{
+              border-radius:10px;
+       box-shadow:0 4px 16px rgba(0,0,0,.25);
+       margin:10px;
+   }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    <h2> hello to me {{developer}}</h2>
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Administrator/Desktop/blog/src/Controller/BlogController.php'|file_link(0) }}">src/Controller/BlogController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Administrator/Desktop/blog/templates/blog/index.html.twig'|file_link(0) }}">templates/blog/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% for article in articles %}
+
+		
+	<section class="articales mt-5">
+		<articale class="mb-5">
+		<h2>{{ article.title }}</h2>
+		<div class="metadata">
+		{# {{ article.CreatedAt }} #}
+
+		<span class="badge badge-danger">
+
+			{{ article.category.name }} 
+			</span>
+		</div>
+
+
+		<div class="content"> 
+		<img src="https://picsum.photos/seed/picsum/300/150">
+
+
+
+		<p>
+			{{ article.content }}
+		</p>
+		<a href="{{path('article_show',{'article':article.id})}}" class="btn btn-info">اقرا المزيد</a>
+
+
+
+		</div>
+
+
+		</articale>
+
+	</section>
+{% endfor %}
+
+
+
 {% endblock %}
